@@ -398,7 +398,7 @@ body.fixed {
   background: url("../img/about_background.png") 0 0 no-repeat;
   background-size: cover;
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .about::after {
