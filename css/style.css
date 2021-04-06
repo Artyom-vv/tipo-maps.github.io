@@ -280,7 +280,7 @@ body.fixed {
 }
 
 .intro {
-  padding-top: 100px;
+  padding-top: 120px;
   overflow: hidden;
   min-height: 100vh;
   background: url("../img/intro_background.jpg") 0 0 no-repeat;
