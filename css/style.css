@@ -159,7 +159,7 @@ body.fixed {
 }
 
 .header__inner {
-  height: 100px;
+  min-height: 100px;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -397,7 +397,7 @@ body.fixed {
   background: url("../img/about_background.png") 0 0 no-repeat;
   background-size: cover;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .about::after {
