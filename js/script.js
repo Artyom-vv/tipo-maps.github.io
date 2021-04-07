@@ -56,6 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
             },
             async enter(data) {
                 await showPage();
+                location.href='';
             }
         }]
     });
