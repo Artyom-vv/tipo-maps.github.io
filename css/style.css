@@ -55,6 +55,12 @@ ul.transition li {
   background-color: #1c3236;
 }
 
+::-webkit-input-placeholder {
+  font-weight: 500;
+  color: #fff;
+  opacity: 0.7;
+}
+
 .green {
   color: #5FFF5B;
 }
@@ -407,6 +413,15 @@ ul.transition li {
 
 .offer__button {
   margin-top: 50px;
+}
+
+.news {
+  padding-top: 100px;
+  overflow: hidden;
+  min-height: 100vh;
+  background: url("../img/news.jpg") 0 0 no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .title {
@@ -840,6 +855,96 @@ ul.transition li {
 
 .maps-page .map {
   margin-top: 100px;
+}
+
+.maps-page__menu-wrapper {
+  margin-top: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.maps-page input {
+  padding: 21px;
+  background: #15272B;
+  margin-right: 55px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #fff;
+  border-radius: 8px 0 0 8px;
+}
+
+.menu {
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #0D1C1F;
+  margin-right: 21px;
+}
+
+.menu__align {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 21px;
+}
+
+.menu__button {
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  margin-right: 25px;
+  position: relative;
+}
+
+.menu__button::before {
+  content: attr(data-toast);
+  position: absolute;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  min-width: 100%;
+  font-size: 16px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  background: #000;
+  opacity: 0;
+  padding: 8px;
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  -webkit-transform: translateY(-40px);
+          transform: translateY(-40px);
+}
+
+.menu__button:last-child {
+  margin-right: 0;
+}
+
+.menu__button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.menu__button:hover::before {
+  opacity: 1;
+}
+
+.menu__button.active {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 1480px) {
