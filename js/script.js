@@ -61,6 +61,20 @@ window.addEventListener('DOMContentLoaded', () => {
         }]
     });
     // barba end
+    // switch
+    const btns = document.querySelectorAll('.menu__button');
+    function switchClear(){
+        btns.forEach((item) => {
+            item.classList.remove('active');
+        });
+    };
+    btns.forEach((item) => {
+        item.addEventListener('click', () => {
+            switchClear();
+            item.classList.add('active')
+        });
+    });
+    // switch
     // slider
 
     // slider
