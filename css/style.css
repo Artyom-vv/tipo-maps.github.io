@@ -27,8 +27,8 @@ ul.transition {
   display: -ms-flexbox;
   display: flex;
   position: fixed;
+  top: 0;
   z-index: 500;
-  bottom: 0;
   left: 0;
   height: 100vh;
   width: 100%;
@@ -130,7 +130,7 @@ ul.transition li {
 }
 
 .button-text {
-  display: block;
+  display: inline-block;
   margin-right: 32px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -495,9 +495,61 @@ ul.transition li {
   padding: 35px;
 }
 
+.about__button-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
 .about__button {
   text-align: right;
   margin-top: 25px;
+}
+
+.about-page {
+  background: url("../img/about_background.png") 0 0 no-repeat;
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.about-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  background: #000;
+  opacity: 0.15;
+  z-index: 1;
+}
+
+.about-page__content {
+  min-height: 690px;
+  padding-top: 25px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  padding-bottom: 35px;
 }
 
 .maps {
@@ -872,7 +924,10 @@ ul.transition li {
 
 @media screen and (max-width: 1270px) {
   .intro__content-wrapper::before {
-    content: '';
+    content: url("../img/renders/blocks.png");
+    right: -6%;
+    -webkit-transform: translateY(8%);
+            transform: translateY(8%);
   }
   .about__group {
     margin: 0;
@@ -887,6 +942,12 @@ ul.transition li {
     margin-left: 0;
   }
   .about__content-wrapper::before {
+    content: '';
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .intro__content-wrapper::before {
     content: '';
   }
 }
