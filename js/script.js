@@ -1,9 +1,21 @@
 window.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.wrapper').addEventListener('click', (e) => {
+        let target = e.target;
+        if (target && target.classList.contains('burger')) {
+            burgerOpen(target);
+        } else if (target && target.closest('.burger')) {
+            burgerOpen(target.closest('.burger'));
+        } else if (target && target.classList.contains('logo') || target.closest('.logo')) {
+            e.preventDefault();
+            scroll = window.pageYOffset;
+            document.querySelector('.burger').classList.remove('active');
+            document.querySelector('.nav').classList.remove('active');
+            document.body.classList.remove('fixed');
+            UnlockScroll();
+        }
+    });
     // burger
     let scroll;
-    const burger = document.querySelector('.burger');
-    const logo = document.querySelector('.logo');
-
     function LockScroll() {
         document.documentElement.scrollTop = scroll;
         document.body.style.top = -scroll + 'px';
@@ -12,8 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
         document.documentElement.scrollTop = scroll;
         document.body.style = null;
     };
-
-    burger.addEventListener('click', () => {
+    function burgerOpen(burger) {
         scroll = window.pageYOffset;
         burger.classList.toggle('active');
         document.querySelector('.nav').classList.toggle('active');
@@ -23,18 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
             UnlockScroll();
         };
         document.body.classList.toggle('fixed');
-    });
-    logo.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (burger.classList.contains('active')) {
-            document.querySelector('.nav').classList.remove('active');
-            burger.classList.remove('active');
-            document.body.classList.remove('fixed');
-            UnlockScroll();
-        }
-    });
-    // burger end
-
+    };
     // barba
     function pageTransition() {
         scroll = window.pageYOffset;
@@ -56,9 +56,11 @@ window.addEventListener('DOMContentLoaded', () => {
             },
             async enter(data) {
                 await showPage();
-                location.href='';
             }
         }]
     });
     // barba end
+    // slider
+
+    // slider
 });
