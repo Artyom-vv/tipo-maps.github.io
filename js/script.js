@@ -45,6 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
     function showPage() {
         document.body.classList.remove('fixed');
         UnlockScroll();
+        document.documentElement.scrollTop = 0;
         return gsap.timeline().to('ul.transition li', { duration: .4, scaleY: 0, transformOrigin: "bottom left", stagger: 0.2, delay: 0.15 })
     };
     barba.init({
