@@ -60,7 +60,6 @@ ul.transition li {
 }
 
 .burger {
-  margin: 12px;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
   display: none;
@@ -963,15 +962,16 @@ ul.transition li {
             transform: translateY(-50%);
     display: block;
   }
-  .burger.active {
-    -webkit-transform: rotate(45deg) translateX(-25%);
-            transform: rotate(45deg) translateX(-25%);
-  }
   .burger.active::after {
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
-    top: 0;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
     left: 0;
+    bottom: 10px;
+  }
+  .burger.active::before {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    top: 10px;
   }
   .burger.active span {
     opacity: 0;
