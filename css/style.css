@@ -60,7 +60,7 @@ ul.transition li {
 }
 
 .burger {
-  padding: 12px;
+  margin: 12px;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
   display: none;
