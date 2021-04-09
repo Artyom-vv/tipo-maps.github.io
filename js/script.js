@@ -11,6 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.grid').classList.add('active');
         }
     };
+    if (document.querySelector('.menu__button')) {
+        storageMenuSet();
+    }
     // burger
     let scroll;
     function LockScroll() {
