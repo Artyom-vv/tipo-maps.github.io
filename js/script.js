@@ -1,19 +1,16 @@
 window.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('.wrapper').addEventListener('click', (e) => {
-        let target = e.target;
-        if (target && target.classList.contains('burger')) {
-            burgerOpen(target);
-        } else if (target && target.closest('.burger')) {
-            burgerOpen(target.closest('.burger'));
-        } else if (target && target.classList.contains('logo') || target.closest('.logo')) {
-            e.preventDefault();
-            scroll = window.pageYOffset;
-            document.querySelector('.burger').classList.remove('active');
-            document.querySelector('.nav').classList.remove('active');
-            document.body.classList.remove('fixed');
-            UnlockScroll();
+    function storageMenuSet() {
+        if (localStorage.getItem('align') === 'grid') {
+            switchClear();
+            document.querySelector('.grid').classList.add('active');
+        } else if (localStorage.getItem('align') === 'row') {
+            switchClear();
+            document.querySelector('.row').classList.add('active');
+        } else {
+            switchClear();
+            document.querySelector('.grid').classList.add('active');
         }
-    });
+    };
     // burger
     let scroll;
     function LockScroll() {
@@ -46,6 +43,9 @@ window.addEventListener('DOMContentLoaded', () => {
         document.body.classList.remove('fixed');
         UnlockScroll();
         document.documentElement.scrollTop = 0;
+        if (document.querySelector('.menu__button')) {
+            storageMenuSet();
+        }
         return gsap.timeline().to('ul.transition li', { duration: .4, scaleY: 0, transformOrigin: "bottom left", stagger: 0.2, delay: 0.15 })
     };
     barba.init({
@@ -62,20 +62,53 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     // barba end
     // switch
-    const btns = document.querySelectorAll('.menu__button');
-    function switchClear(){
+    function switchClear() {
+        const btns = document.querySelectorAll('.menu__button');
         btns.forEach((item) => {
             item.classList.remove('active');
         });
     };
-    btns.forEach((item) => {
-        item.addEventListener('click', () => {
-            switchClear();
-            item.classList.add('active')
-        });
-    });
     // switch
     // slider
 
     // slider
+
+    // addEventListener
+    document.querySelector('.wrapper').addEventListener('click', (e) => {
+        let target = e.target;
+        if (target && target.classList.contains('burger')) {
+            burgerOpen(target);
+        } else if (target && target.closest('.burger')) {
+            burgerOpen(target.closest('.burger'));
+        } else if (target && target.classList.contains('logo') || target.closest('.logo')) {
+            e.preventDefault();
+            document.querySelector('.burger').classList.remove('active');
+            document.querySelector('.nav').classList.remove('active');
+            document.body.classList.remove('fixed');
+            UnlockScroll();
+        } else if (target && target.classList.contains('menu__button') || target.closest('.menu__button')) {
+            switchClear();
+            let thisTargetBtn = target.closest('.menu__button');
+            if (thisTargetBtn.classList.contains('grid')) {
+                if (localStorage.getItem('align')) {
+                    localStorage.align = 'grid'
+                } else {
+                    localStorage.setItem('align', 'grid');
+                }
+            } else if (thisTargetBtn.classList.contains('row')) {
+                if (localStorage.getItem('align')) {
+                    localStorage.align = 'row'
+                } else {
+                    localStorage.setItem('align', 'row');
+                }
+            } else {
+                if (localStorage.getItem('align')) {
+                    localStorage.align = 'grid'
+                } else {
+                    localStorage.setItem('align', 'grid');
+                }
+            }
+            thisTargetBtn.classList.add('active');
+        }
+    });
 });
