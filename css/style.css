@@ -11,7 +11,31 @@
 }
 
 html, body {
+  position: relative;
   height: 100%;
+}
+
+.bg-about, .bg-news, .bg-maps {
+  position: fixed;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  will-change: transform;
+  z-index: -1;
+}
+
+.bg-about {
+  background: url("../img/about_background.png") no-repeat 0 0;
+}
+
+.bg-news {
+  background: url("../img/news.jpg") no-repeat 0 0;
+}
+
+.bg-maps {
+  background: url("../img/maps_background.png") no-repeat 0 0;
 }
 
 body.fixed {
@@ -419,22 +443,6 @@ ul.transition li {
   padding-top: 100px;
   overflow: hidden;
   min-height: 100vh;
-  background: url("../img/news.jpg") 0 0 no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  position: relative;
-}
-.news::before {
-  content: '';
-  position: fixed;
-  background: url("../img/news.jpg") no-repeat 0 0;
-  background-size: cover;
-  top: 0;
-  left: 0;
-  will-change: transform;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
 }
 
 .title {
@@ -538,7 +546,6 @@ ul.transition li {
 }
 
 .about-page {
-  background: url("../img/about_background.png") 0 0 no-repeat;
   background-size: cover;
   position: relative;
   min-height: 100vh;
@@ -827,8 +834,6 @@ ul.transition li {
 .maps-page {
   padding-top: 100px;
   padding-bottom: 100px;
-  background: url("../img/maps_background.png") 0 0 no-repeat;
-  background-attachment: fixed;
   background-size: cover;
   min-height: 100vh;
   position: relative;
@@ -839,18 +844,6 @@ ul.transition li {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-.maps-page::before {
-  content: '';
-  position: fixed;
-  background: url("../img/maps__background.jpg") no-repeat 0 0;
-  background-size: cover;
-  top: 0;
-  left: 0;
-  will-change: transform;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
 }
 
 .maps-page::after {
@@ -949,6 +942,8 @@ ul.transition li {
   border-radius: 5px;
   top: 0;
   left: 0;
+  -webkit-transition: color 0.3s ease, opacity .2s ease;
+  transition: color 0.3s ease, opacity .2s ease;
   -webkit-transform: translateY(-40px);
           transform: translateY(-40px);
 }
@@ -970,6 +965,10 @@ ul.transition li {
 
 .menu__button.active {
   opacity: 0.8;
+}
+
+.menu__button.active::before {
+  color: #4ADC59;
 }
 
 @media screen and (max-width: 1480px) {
