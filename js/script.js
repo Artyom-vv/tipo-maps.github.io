@@ -3,12 +3,15 @@ window.addEventListener('DOMContentLoaded', () => {
         if (localStorage.getItem('align') === 'grid') {
             switchClear();
             document.querySelector('.grid').classList.add('active');
+            document.querySelector('.maps-page__group').classList.add('grid')
         } else if (localStorage.getItem('align') === 'row') {
             switchClear();
             document.querySelector('.row').classList.add('active');
+            document.querySelector('.maps-page__group').classList.add('row')
         } else {
             switchClear();
             document.querySelector('.grid').classList.add('active');
+            document.querySelector('.maps-page__group').classList.add('grid')
         }
     };
     if (document.querySelector('.menu__button')) {
@@ -98,18 +101,24 @@ window.addEventListener('DOMContentLoaded', () => {
                 } else {
                     localStorage.setItem('align', 'grid');
                 }
+                document.querySelector('.maps-page__group').classList.remove('row')
+                document.querySelector('.maps-page__group').classList.add('grid')
             } else if (thisTargetBtn.classList.contains('row')) {
                 if (localStorage.getItem('align')) {
                     localStorage.align = 'row'
                 } else {
                     localStorage.setItem('align', 'row');
                 }
+                document.querySelector('.maps-page__group').classList.remove('grid')
+                document.querySelector('.maps-page__group').classList.add('row')
             } else {
                 if (localStorage.getItem('align')) {
                     localStorage.align = 'grid'
                 } else {
                     localStorage.setItem('align', 'grid');
                 }
+                document.querySelector('.maps-page__group').classList.remove('row')
+                document.querySelector('.maps-page__group').classList.add('grid')
             }
             thisTargetBtn.classList.add('active');
         }
