@@ -8,7 +8,11 @@ window.addEventListener('DOMContentLoaded', () => {
             switchClear();
             document.querySelector('.row').classList.add('active');
             document.querySelector('.maps-page__group').classList.add('row')
-        } else {
+        } else if (document.documentElement.clientWidth < 901) {
+            localStorage.setItem('align', 'grid');
+            document.querySelector('.maps-page__group').classList.add('grid')
+        }
+        else {
             switchClear();
             document.querySelector('.grid').classList.add('active');
             document.querySelector('.maps-page__group').classList.add('grid')
