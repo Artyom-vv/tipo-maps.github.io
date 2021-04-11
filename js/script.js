@@ -18,6 +18,7 @@ function searchMapsInput() {
     else {
         elements.forEach((item) => {
             item.classList.remove('hidden')
+            document.querySelector('.search-not-found').classList.remove('show');
         })
     }
     let count = 0;
