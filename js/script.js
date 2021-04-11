@@ -1,5 +1,13 @@
 window.addEventListener('DOMContentLoaded', () => {
     function storageMenuSet() {
+        if (document.documentElement.clientWidth <= 900) {
+            if (localStorage.getItem('align')) {
+                localStorage.setItem('align', 'grid');
+            } else {
+                localStorage.align = 'grid'
+            }
+            document.querySelector('.maps-page__group').classList.add('grid')
+        }
         if (localStorage.getItem('align') === 'grid') {
             switchClear();
             document.querySelector('.grid').classList.add('active');
@@ -8,9 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
             switchClear();
             document.querySelector('.row').classList.add('active');
             document.querySelector('.maps-page__group').classList.add('row')
-        } else if (document.documentElement.clientWidth < 901) {
-            localStorage.setItem('align', 'grid');
-            document.querySelector('.maps-page__group').classList.add('grid')
         }
         else {
             switchClear();
