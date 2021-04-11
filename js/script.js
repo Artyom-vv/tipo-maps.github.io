@@ -1,3 +1,38 @@
+// search
+function searchMapsInput() {
+    let val = document.querySelector('.menu__input').value.trim().toLowerCase();
+    let elements = document.querySelectorAll('.maps-page__map');
+    if (val != '') {
+        elements.forEach((item) => {
+            let content = item.getAttribute('data-tags').split(' ');
+            content = content.concat(item.querySelector('.text.low.trim').innerText.split(' '));
+            content = content.join(' ').toLowerCase();
+            if (content.search(val) == -1) {
+                item.classList.add('hidden');
+            } else {
+                item.classList.remove('hidden');
+                document.querySelector('.search-not-found').classList.remove('show');
+            }
+        });
+    }
+    else {
+        elements.forEach((item) => {
+            item.classList.remove('hidden')
+        })
+    }
+    let count = 0;
+    elements.forEach((item) => {
+        if (item.classList.contains('hidden')) {
+            count++;
+            console.log(count);
+        }
+    });
+    if (elements.length === count) {
+        document.querySelector('.search-not-found').classList.add('show');
+    }
+};
+// search
+
 window.addEventListener('DOMContentLoaded', () => {
     function storageMenuSet() {
         if (document.documentElement.clientWidth <= 900) {
@@ -84,6 +119,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     };
     // switch
+
     // slider
 
     // slider
