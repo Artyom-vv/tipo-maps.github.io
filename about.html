@@ -47,15 +47,82 @@
             <section class="about-page">
                 <div class="about-page__content">
                     <div class="container">
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
+                        <div class="slider-container">
+                            <div class="slider">
+                                <div class="slider__slide slide">
+                                    <div class="slide__profile">
+                                        <div class="slide__img">
+                                            <img src="img/avatars/suppick.png" alt="suppick">
+                                        </div>
+                                        <div class="slide__avatar">
+                                            <h2 class="slide__nick">SuPPick</h2>
+                                            <a href="https://vk.com/peaceful_who" target="_blank" "slide__vk">
+                                                <img src="img/vk.svg" alt="vk">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="slide__content">
+                                        <p class="slide__text text">
+                                            Меня зовут Артём, в этой команде я являюсь программистом. Вся техническая
+                                            часть
+                                            остаётся за мной. Мне нравится создавать дата-паки, механизмы для карт,
+                                            программировать и верстать сайты. Я умею это делать и получаю удовольствее
+                                            от
+                                            результата.
+                                        </p>
+                                        <p class="slide__text text">
+                                            Считаю, что без интереса не получится ничего, поэтому занимаюсь тем, к чему
+                                            не
+                                            равнодушен. Майнкрафт, как песочница, предоставляет возможность поиграться с
+                                            командами и видеть визуальную отдачу, именно это меня привлекает.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-navigation">
+                                <div class="slider-navigation__switch prev blocked">
+                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0)">
+                                            <path
+                                                d="M7.24079 15.8232L21.1167 29.6607C21.5713 30.1139 22.3073 30.1131 22.7612 29.6584C23.2147 29.2038 23.2136 28.4673 22.7589 28.0139L9.70893 14.9999L22.7593 1.9861C23.214 1.53258 23.2151 0.796589 22.7617 0.341904C22.5342 0.113975 22.2361 9.22315e-06 21.938 9.1971e-06C21.6407 9.1711e-06 21.3438 0.113213 21.1167 0.339559L7.24079 14.1767C7.02183 14.3946 6.89896 14.691 6.89896 14.9999C6.89896 15.3089 7.02218 15.605 7.24079 15.8232Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0">
+                                                <rect width="30" height="30" fill="white"
+                                                    transform="translate(30 30) rotate(-180)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                    <span>назад</span>
+                                </div>
+                                <div class="slider-navigation__points">
+                                    <span class="slider-navigation__point active"></span>
+                                    <span class="slider-navigation__point"></span>
+                                </div>
+                                <div class="slider-navigation__switch next">
+                                    <span>вперёд</span>
+                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0)">
+                                            <path
+                                                d="M22.7592 14.1768L8.8833 0.33925C8.42867 -0.113854 7.69262 -0.113092 7.23875 0.341594C6.78524 0.796221 6.78641 1.53268 7.2411 1.98614L20.291 15.0001L7.24063 28.0139C6.786 28.4674 6.78483 29.2034 7.23829 29.6581C7.4658 29.886 7.76387 30 8.06194 30C8.35924 30 8.65613 29.8868 8.88324 29.6604L22.7592 15.8233C22.9781 15.6054 23.101 15.309 23.101 15.0001C23.101 14.6911 22.9778 14.395 22.7592 14.1768Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0">
+                                                <rect width="30" height="30" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
 
                                 </div>
                             </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="about-page__img">
+                            <img src="img/renders/3.png" alt="SuPPick img slider" class="show">
                         </div>
                     </div>
                 </div>
@@ -64,7 +131,6 @@
     </div>
 
     <script src="https://unpkg.com/@barba/core"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"
         integrity="sha512-BPC7QKs93Q5Z+t6xwbesNDeqW3q59aei8jRXXdFMWozDZo+G1y0N3tna8DCwQTUlVpRwXiCgL/9+P62/8hP+KQ=="
         crossorigin="anonymous"></script>
