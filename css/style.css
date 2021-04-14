@@ -185,8 +185,12 @@ ul.transition li {
   right: 3px;
 }
 
-.slider {
+.slider-about-page {
   max-width: 1051px;
+}
+
+.slider {
+  max-width: 100%;
 }
 
 .slide {
@@ -202,6 +206,7 @@ ul.transition li {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: auto;
 }
 
 .slide__profile {
@@ -230,6 +235,15 @@ ul.transition li {
   color: #FFFFFF;
 }
 
+.slide__vk.none:hover {
+  cursor: no-drop;
+}
+
+.slide:hover {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
 .slider-navigation {
   max-width: 1051px;
   margin-top: 20px;
@@ -256,10 +270,11 @@ ul.transition li {
           align-items: center;
 }
 
-.slider-navigation__point {
+.slider-navigation__points .swiper-pagination-bullet {
   display: block;
   -webkit-transition: 0.1s ease-in-out;
   transition: 0.1s ease-in-out;
+  opacity: 1;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.35);
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.35);
   width: 35px;
@@ -269,24 +284,24 @@ ul.transition li {
   margin: 0 10px;
 }
 
-.slider-navigation__point.active {
+.slider-navigation__points .swiper-pagination-bullet-active {
   background: #50DF4D;
 }
 
-.slider-navigation__point:first-child {
+.slider-navigation__points .swiper-pagination-bullet:first-child {
   margin-left: 0;
 }
 
-.slider-navigation__point:last-child {
+.slider-navigation__points .swiper-pagination-bullet:last-child {
   margin-right: 0;
 }
 
-.slider-navigation__point:hover {
+.slider-navigation__points .swiper-pagination-bullet:hover {
   cursor: pointer;
   background: #4c6064;
 }
 
-.slider-navigation__point:hover.active {
+.slider-navigation__points .swiper-pagination-bullet:hover.active {
   background: #50DF4D;
 }
 
@@ -297,18 +312,6 @@ ul.transition li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.slider-navigation__switch.blocked:hover {
-  cursor: no-drop;
-}
-
-.slider-navigation__switch.blocked span {
-  color: #ACACAC;
-}
-
-.slider-navigation__switch.blocked path {
-  fill: #ACACAC;
 }
 
 .slider-navigation__switch span {
@@ -337,6 +340,18 @@ ul.transition li {
 
 .slider-navigation__switch:hover {
   cursor: pointer;
+}
+
+.swiper-button-disabled:hover {
+  cursor: no-drop;
+}
+
+.swiper-button-disabled span {
+  color: #ACACAC;
+}
+
+.swiper-button-disabled path {
+  fill: #ACACAC;
 }
 
 .wrapper {
