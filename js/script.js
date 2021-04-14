@@ -18,8 +18,8 @@ function searchMapsInput() {
     else {
         elements.forEach((item) => {
             item.classList.remove('hidden')
-            document.querySelector('.search-not-found').classList.remove('show');
         })
+        document.querySelector('.search-not-found').classList.remove('show');
     }
     let count = 0;
     elements.forEach((item) => {
@@ -122,7 +122,19 @@ window.addEventListener('DOMContentLoaded', () => {
     // switch
 
     // slider
+    new Swiper('.slider-about-page', {
+        navigation: {
+            nextEl: '.slider-navigation__switch.next',
+            prevEl: '.slider-navigation__switch.prev',
+        },
 
+        pagination: {
+            el: '.slider-navigation__points',
+            clickable: true
+        },
+        spaceBetween: 30,
+        autoHeight: true
+    });
     // slider
 
     // addEventListener
