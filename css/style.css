@@ -284,8 +284,17 @@ ul.transition li {
   margin: 0 10px;
 }
 
+.slider-navigation__points .swiper-pagination-bullet:hover {
+  cursor: pointer;
+  background: #4c6064;
+}
+
 .slider-navigation__points .swiper-pagination-bullet-active {
   background: #50DF4D;
+}
+
+.slider-navigation__points .swiper-pagination-bullet-active:hover {
+  background: #40E05A;
 }
 
 .slider-navigation__points .swiper-pagination-bullet:first-child {
@@ -294,15 +303,6 @@ ul.transition li {
 
 .slider-navigation__points .swiper-pagination-bullet:last-child {
   margin-right: 0;
-}
-
-.slider-navigation__points .swiper-pagination-bullet:hover {
-  cursor: pointer;
-  background: #4c6064;
-}
-
-.slider-navigation__points .swiper-pagination-bullet:hover.active {
-  background: #50DF4D;
 }
 
 .slider-navigation__switch {
