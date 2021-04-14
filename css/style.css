@@ -16,15 +16,15 @@ html, body {
 }
 
 .bg-about {
-  background: url("../img/about_background.png") no-repeat 0 0;
+  background: url("../img/about_background.webp") no-repeat 0 0;
 }
 
 .bg-news {
-  background: url("../img/news.jpg") no-repeat 0 0;
+  background: url("../img/news.webp") no-repeat 0 0;
 }
 
 .bg-maps {
-  background: url("../img/maps_background.png") no-repeat 0 0;
+  background: url("../img/maps_background.webp") no-repeat 0 0;
 }
 
 .bg-about, .bg-news, .bg-maps {
@@ -502,7 +502,7 @@ ul.transition li {
   padding-top: 100px;
   overflow: hidden;
   min-height: 100vh;
-  background: url("../img/intro_background.jpg") 0 0 no-repeat;
+  background: url("../img/intro_background.webp") 0 0 no-repeat;
   background-position: left;
   background-size: cover;
   display: -webkit-box;
@@ -535,7 +535,7 @@ ul.transition li {
 }
 
 .intro__content-wrapper::before {
-  content: url("../img/renders/1.png");
+  content: url("../img/renders/1.webp");
   position: absolute;
   z-index: 2;
   right: 6.2%;
@@ -629,7 +629,7 @@ ul.transition li {
 }
 
 .about {
-  background: url("../img/about_background.png") 0 0 no-repeat;
+  background: url("../img/about_background.webp") 0 0 no-repeat;
   background-size: cover;
   position: relative;
   min-height: 100vh;
@@ -673,7 +673,7 @@ ul.transition li {
 }
 
 .about__content-wrapper::before {
-  content: url("../img/renders/2.png");
+  content: url("../img/renders/2.webp");
   position: absolute;
   z-index: 0;
   bottom: 0;
@@ -773,7 +773,7 @@ ul.transition li {
 }
 
 .maps {
-  background: url("../img/maps_background.png") 0 0 no-repeat;
+  background: url("../img/maps_background.webp") 0 0 no-repeat;
   background-size: cover;
   min-height: 100vh;
   position: relative;
@@ -1548,7 +1548,7 @@ ul.transition li {
 
 @media screen and (max-width: 1270px) {
   .intro__content-wrapper::before {
-    content: url("../img/renders/blocks.png");
+    content: url("../img/renders/blocks.webp");
     right: -6%;
     -webkit-transform: translateY(8%);
             transform: translateY(8%);
