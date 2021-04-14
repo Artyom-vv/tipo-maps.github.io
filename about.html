@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Mina&family=Montserrat:wght@400;500;700&family=Play:wght@700&family=Scada:wght@400;700&family=Ubuntu:wght@500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <title>Типо карты / О нас</title>
 </head>
 
@@ -47,40 +48,76 @@
             <section class="about-page">
                 <div class="about-page__content">
                     <div class="container">
-                        <div class="slider-container">
-                            <div class="slider">
-                                <div class="slider__slide slide">
+                        <div class="slider-about-page swiper-container">
+                            <div class="slider swiper-wrapper">
+                                <div class="swiper-slide slider__slide slide">
                                     <div class="slide__profile">
                                         <div class="slide__img">
                                             <img src="img/avatars/suppick.png" alt="suppick">
                                         </div>
                                         <div class="slide__avatar">
                                             <h2 class="slide__nick">SuPPick</h2>
-                                            <a href="https://vk.com/peaceful_who" target="_blank" "slide__vk">
+                                            <a href="https://vk.com/peaceful_who" target="_blank" class="slide__vk">
                                                 <img src="img/vk.svg" alt="vk">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="slide__content">
                                         <p class="slide__text text">
-                                            Меня зовут Артём, в этой команде я являюсь программистом. Вся техническая
+                                            Меня зовут Артём, в этой команде я являюсь программистом. Вся
+                                            техническая
                                             часть
                                             остаётся за мной. Мне нравится создавать дата-паки, механизмы для карт,
-                                            программировать и верстать сайты. Я умею это делать и получаю удовольствее
+                                            программировать и верстать сайты. Я умею это делать и получаю
+                                            удовольствее
                                             от
                                             результата.
                                         </p>
                                         <p class="slide__text text">
-                                            Считаю, что без интереса не получится ничего, поэтому занимаюсь тем, к чему
+                                            Считаю, что без интереса не получится ничего, поэтому занимаюсь тем, к
+                                            чему
                                             не
-                                            равнодушен. Майнкрафт, как песочница, предоставляет возможность поиграться с
+                                            равнодушен. Майнкрафт, как песочница, предоставляет возможность
+                                            поиграться с
                                             командами и видеть визуальную отдачу, именно это меня привлекает.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide slider__slide slide">
+                                    <div class="slide__profile">
+                                        <div class="slide__img">
+                                            <img src="img/avatars/vorkgame.png" alt="vorkgame">
+                                        </div>
+                                        <div class="slide__avatar">
+                                            <h2 class="slide__nick">VorkGame</h2>
+                                            <a href="##" class="slide__vk none">
+                                                <img src="img/vk.svg" alt="vk">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="slide__content">
+                                        <p class="slide__text text">
+                                            Меня зовут Vork, в команде я являюсь одним из творческих лиц. Мои задачи
+                                            в
+                                            основном относятся к ресурс-пакам. Я делаю различные модели и текстуры,
+                                            чтобы карта дополнилась атмосферой. Также я отвечаю за звуковое
+                                            сопровождение, что не менее важная задача. В сюжетных картах я выступаю
+                                            как
+                                            сценарист.
+
+                                        </p>
+                                        <p class="slide__text text">
+                                            Я думаю, что главное в деле - это хотеть! Если ты чего-то хочешь, то
+                                            обязательно к этому придёшь. Например, мне хочется улучшить качество
+                                            своей
+                                            работы. Я люблю майнкрафт за его возможности, а возможности почти что
+                                            безграничны!
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="slider-navigation">
-                                <div class="slider-navigation__switch prev blocked">
+                                <div class="slider-navigation__switch prev">
                                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0)">
@@ -99,8 +136,6 @@
                                     <span>назад</span>
                                 </div>
                                 <div class="slider-navigation__points">
-                                    <span class="slider-navigation__point active"></span>
-                                    <span class="slider-navigation__point"></span>
                                 </div>
                                 <div class="slider-navigation__switch next">
                                     <span>вперёд</span>
@@ -134,6 +169,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"
         integrity="sha512-BPC7QKs93Q5Z+t6xwbesNDeqW3q59aei8jRXXdFMWozDZo+G1y0N3tna8DCwQTUlVpRwXiCgL/9+P62/8hP+KQ=="
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 
