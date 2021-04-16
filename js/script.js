@@ -33,6 +33,74 @@ function searchMapsInput() {
     }
 };
 // search
+// wheel
+const vk = document.querySelector('.fixed-vk');
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 100) {
+        vk.style.top = '35px'
+    } else if (window.pageYOffset <= 270) {
+        vk.style.top = null;
+    }
+});
+// wheel
+// modal
+let scroll;
+// scroll lock and unlock
+function paddingSet() {
+    let padding = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.paddingRight = padding + "px";
+
+    document.querySelectorAll('.fixed-padding-add').forEach((item) => {
+        item.style.paddingRight = padding + 'px';
+    });
+};
+function LockScroll() {
+    if (document.documentElement.scrollHeight !== window.innerHeight && document.documentElement.clientWidth > 1280) {
+        paddingSet();
+    };
+    document.body.classList.add('fixed');
+    document.body.style.top = -scroll + 'px';
+};
+function UnlockScroll() {
+    document.body.classList.remove('fixed');
+    document.documentElement.scrollTop = scroll;
+    document.body.style = null;
+    document.querySelectorAll('.fixed-padding-add').forEach((item) => {
+        item.style = null;
+    });
+};
+// scroll lock and unlock
+
+function closeModal() {
+    document.querySelectorAll('.modal-wrapper').forEach((item) => {
+        item.classList.remove('show');
+    })
+    if (document.documentElement.clientWidth > 1280) {
+        setTimeout(() => {
+            UnlockScroll()
+        }, 200);
+    } else {
+        UnlockScroll()
+    }
+    // closeModalRemoveClasses();
+};
+function openModal() {
+    document.querySelectorAll('.modal-wrapper').forEach((modal) => {
+        if (document.querySelector('.offer__button').getAttribute('data-index') === modal.getAttribute('data-index')) {
+            scroll = window.pageYOffset;
+
+            LockScroll();
+
+            document.querySelectorAll('.modal-wrapper').forEach((item) => {
+                item.classList.remove('show');
+            });
+
+            modal.classList.add('show');
+        }
+    })
+};
+// modal
+
 window.addEventListener('DOMContentLoaded', () => {
     function storageMenuSet() {
         if (document.documentElement.clientWidth <= 900) {
@@ -61,16 +129,24 @@ window.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.menu__button')) {
         storageMenuSet();
     }
+    // select item
+    function setSelectItem(item) {
+        if (!item.classList.contains('selected')) {
+            document.querySelectorAll('.select__item').forEach((item) => {
+                item.classList.remove('selected');
+            });
+            content = item.innerText;
+            item.closest('.select').setAttribute('data-select-element', content);
+            item.classList.add('selected')
+        } else {
+            document.querySelectorAll('.select__item').forEach((item) => {
+                item.classList.remove('selected');
+            });
+            item.closest('.select').setAttribute('data-select-element', 'Не выбрано');
+        }
+    };
+    // select item
     // burger
-    let scroll;
-    function LockScroll() {
-        document.documentElement.scrollTop = scroll;
-        document.body.style.top = -scroll + 'px';
-    };
-    function UnlockScroll() {
-        document.documentElement.scrollTop = scroll;
-        document.body.style = null;
-    };
     function burgerOpen(burger) {
         scroll = window.pageYOffset;
         burger.classList.toggle('active');
@@ -84,9 +160,6 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     // barba
     function pageTransition() {
-        scroll = window.pageYOffset;
-        document.body.classList.add('fixed');
-        LockScroll();
         return gsap.timeline().to('ul.transition li', { duration: .4, scaleY: 1, transformOrigin: "bottom left", stagger: 0.2 })
     };
     // slider
@@ -108,8 +181,6 @@ window.addEventListener('DOMContentLoaded', () => {
     sliderInit();
     // slider
     function showPage() {
-        document.body.classList.remove('fixed');
-        UnlockScroll();
         document.documentElement.scrollTop = 0;
         if (document.querySelector('.menu__button')) {
             storageMenuSet();
@@ -120,10 +191,13 @@ window.addEventListener('DOMContentLoaded', () => {
         sync: true,
         transitions: [{
             async leave(data) {
+                paddingSet();
+                LockScroll();
                 await pageTransition();
                 data.current.container.remove()
             },
             async enter(data) {
+                UnlockScroll();
                 sliderInit();
                 await showPage();
             }
@@ -138,7 +212,9 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     };
     // switch
-
+    // select
+    const select = document.querySelector('.select');
+    // select
     // addEventListener
     document.querySelector('.wrapper').addEventListener('click', (e) => {
         let target = e.target;
@@ -183,4 +259,23 @@ window.addEventListener('DOMContentLoaded', () => {
             thisTargetBtn.classList.add('active');
         }
     });
+    document.querySelectorAll('.modal-wrapper').forEach((item) => {
+        item.addEventListener('click', (e) => {
+            if (e.target && e.target.classList.contains('modal-wrapper') && !e.target.closest('.modal') || e.target.closest('.modal__close')) {
+                closeModal();
+            } else if (e.target && e.target.classList.contains('select') || e.target.closest('.select')) {
+                select.classList.toggle('open');
+                if (e.target.closest('.select__item')) {
+                    setSelectItem(e.target);
+                }
+            } else if (e.target && e.target.classList.contains('interaction__item') || e.target.closest('.interaction__item')) {
+                const item = e.target.closest('.interaction__item');
+                if (item.classList.contains('selected')) {
+                    item.classList.remove('selected');
+                } else {
+                    item.classList.add('selected')
+                }
+            }
+        })
+    })
 });
