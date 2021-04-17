@@ -55,6 +55,7 @@ function paddingSet() {
     });
 };
 function LockScroll() {
+    scroll = window.pageYOffset;
     if (document.documentElement.scrollHeight !== window.innerHeight && document.documentElement.clientWidth > 1280) {
         paddingSet();
     };
@@ -130,6 +131,17 @@ window.addEventListener('DOMContentLoaded', () => {
         storageMenuSet();
     }
     // select item
+    function switchIneraction(item) {
+        let index = item.getAttribute('data-switch-interaction');
+        let interactionSwitchItems = document.querySelectorAll('.js-interaction');
+        interactionSwitchItems.forEach((item) => {
+            item.classList.add('hide')
+            if (index === item.getAttribute('data-interaction-index')) {
+                item.classList.remove('hide')
+            }
+        });
+    };
+    switchIneraction(document.querySelector('.select__item.selected'));
     function setSelectItem(item) {
         if (!item.classList.contains('selected')) {
             document.querySelectorAll('.select__item').forEach((item) => {
@@ -137,12 +149,22 @@ window.addEventListener('DOMContentLoaded', () => {
             });
             content = item.innerText;
             item.closest('.select').setAttribute('data-select-element', content);
-            item.classList.add('selected')
+            item.classList.add('selected');
+            item.closest('.select').classList.remove('open')
+
+            if (!item.closest('.select').classList.contains('low')) {
+                switchIneraction(item);
+            }
         } else {
             document.querySelectorAll('.select__item').forEach((item) => {
+                item.closest('.select').classList.remove('open');
                 item.classList.remove('selected');
             });
-            item.closest('.select').setAttribute('data-select-element', 'Не выбрано');
+            if (item.closest('.select').classList.contains('low')) {
+                item.closest('.select.low').setAttribute('data-select-element', 'Для чего');
+            } else {
+                item.closest('.select').setAttribute('data-select-element', 'Не выбрано');
+            }
         }
     };
     // select item
@@ -181,7 +203,6 @@ window.addEventListener('DOMContentLoaded', () => {
     sliderInit();
     // slider
     function showPage() {
-        document.documentElement.scrollTop = 0;
         if (document.querySelector('.menu__button')) {
             storageMenuSet();
         }
@@ -198,6 +219,7 @@ window.addEventListener('DOMContentLoaded', () => {
             },
             async enter(data) {
                 UnlockScroll();
+                document.documentElement.scrollTop = 0;
                 sliderInit();
                 await showPage();
             }
@@ -213,7 +235,7 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     // switch
     // select
-    const select = document.querySelector('.select');
+    const selects = document.querySelectorAll('.select');
     // select
     // addEventListener
     document.querySelector('.wrapper').addEventListener('click', (e) => {
@@ -262,9 +284,12 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.modal-wrapper').forEach((item) => {
         item.addEventListener('click', (e) => {
             if (e.target && e.target.classList.contains('modal-wrapper') && !e.target.closest('.modal') || e.target.closest('.modal__close')) {
+                selects.forEach((item) => {
+                    item.classList.remove('open');
+                });
                 closeModal();
             } else if (e.target && e.target.classList.contains('select') || e.target.closest('.select')) {
-                select.classList.toggle('open');
+                e.target.closest('.select').classList.toggle('open');
                 if (e.target.closest('.select__item')) {
                     setSelectItem(e.target);
                 }
@@ -275,6 +300,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 } else {
                     item.classList.add('selected')
                 }
+            } else if (e.target && !e.target.classList.contains('select__item') || !e.target.closest('.select__item')) {
+                selects.forEach((item) => {
+                    item.classList.remove('open');
+                });
             }
         })
     })
