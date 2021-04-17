@@ -140,53 +140,16 @@ body.fixed {
   max-width: 85%;
 }
 
-.interaction {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  margin-top: 35px;
-}
-
-.interaction__tags {
-  margin-top: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.interaction .interaction__item {
-  padding: 5px 10px;
-  margin: 0 5px;
-  border-radius: 7px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  color: #fff;
-  background: #0a0f11;
-}
-
-.interaction .interaction__item:first-child {
-  margin-left: 0;
-}
-
-.interaction .interaction__item:hover {
-  cursor: pointer;
-  color: #d3d3d3;
-}
-
-.interaction .interaction__item.selected {
-  color: #4ADC59;
-  background: #071718;
-}
-
 .select {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  width: 44%;
+  margin: 0 10px;
+  width: 50%;
   display: block;
   padding: 15px;
+  padding-right: 55px;
   border-radius: 10px;
   background: #081416;
   color: #fff;
@@ -195,6 +158,19 @@ body.fixed {
   font-size: 22px;
   position: relative;
   z-index: 25;
+}
+
+.select:first-child {
+  margin-left: 0;
+}
+
+.select:last-child {
+  margin-right: 0;
+}
+
+.select.low {
+  width: auto;
+  min-width: 35%;
 }
 
 .select:hover {
@@ -270,6 +246,63 @@ body.fixed {
 .select__item.selected {
   color: #4ADC59;
   background: #081a1b;
+}
+
+.interaction {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin-top: 35px;
+}
+
+.interaction__tags {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.interaction__tags-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.interaction__select-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.interaction .interaction__item {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 7px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #fff;
+  background: #0a0f11;
+}
+
+.interaction .interaction__item:first-child {
+  margin-left: 0;
+}
+
+.interaction .interaction__item:hover {
+  cursor: pointer;
+  color: #d3d3d3;
+}
+
+.interaction .interaction__item.selected {
+  color: #4ADC59;
+  background: #071718;
+}
+
+.js-interaction.hide {
+  display: none;
 }
 
 .fixed-vk {
@@ -415,6 +448,7 @@ ul.transition li {
 
 .button-green:hover {
   background: #17ce2a;
+  cursor: pointer;
 }
 
 .button-text {
