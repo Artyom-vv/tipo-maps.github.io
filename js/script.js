@@ -33,6 +33,15 @@ function searchMapsInput() {
     }
 };
 // search
+// textarea
+function calcTextLength() {
+    document.querySelectorAll('.interaction__textarea').forEach((item) => {
+        let val = item.value;
+        let textLength = val.split('').length;
+        item.closest('.interaction__textarea-wrapper').setAttribute('data-length', textLength);
+    });
+};
+// textarea
 // wheel
 const vk = document.querySelector('.fixed-vk');
 window.addEventListener('scroll', () => {
@@ -101,73 +110,142 @@ function openModal() {
     })
 };
 // modal
+let name_el = document.querySelector('.interaction__input.name');
+let surname_el = document.querySelector('.interaction__input.surname');
+let link_el = document.querySelector('.interaction__input.link');
+
+// name and surnama and link
+function getInfoAboutPeople() {
+    nameI = name_el.value;
+    surname = surname_el.value;
+    link = link_el.value;
+
+    if (localStorage.getItem('identify')) {
+        localStorage.identify = JSON.stringify({
+            name: nameI,
+            surname: surname,
+            link: link
+        });
+    } else {
+        localStorage.setItem('identify', JSON.stringify({
+            name: nameI,
+            surname: surname,
+            link: link
+        }));
+    };
+};
+// name and surnama and link
 
 window.addEventListener('DOMContentLoaded', () => {
     function storageMenuSet() {
-        if (document.documentElement.clientWidth <= 900) {
-            if (localStorage.getItem('align')) {
-                localStorage.setItem('align', 'grid');
-            } else {
-                localStorage.align = 'grid'
+        if (document.querySelector('.menu__button')) {
+
+            if (document.documentElement.clientWidth <= 900) {
+                if (localStorage.getItem('align')) {
+                    localStorage.setItem('align', 'grid');
+                } else {
+                    localStorage.align = 'grid'
+                }
+                document.querySelector('.maps-page__group').classList.add('grid')
             }
-            document.querySelector('.maps-page__group').classList.add('grid')
+            if (localStorage.getItem('align') === 'grid') {
+                switchClear();
+                document.querySelector('.grid').classList.add('active');
+                document.querySelector('.maps-page__group').classList.add('grid')
+            } else if (localStorage.getItem('align') === 'row') {
+                switchClear();
+                document.querySelector('.row').classList.add('active');
+                document.querySelector('.maps-page__group').classList.add('row')
+            }
+            else {
+                switchClear();
+                document.querySelector('.grid').classList.add('active');
+                document.querySelector('.maps-page__group').classList.add('grid')
+            }
         }
-        if (localStorage.getItem('align') === 'grid') {
-            switchClear();
-            document.querySelector('.grid').classList.add('active');
-            document.querySelector('.maps-page__group').classList.add('grid')
-        } else if (localStorage.getItem('align') === 'row') {
-            switchClear();
-            document.querySelector('.row').classList.add('active');
-            document.querySelector('.maps-page__group').classList.add('row')
-        }
-        else {
-            switchClear();
-            document.querySelector('.grid').classList.add('active');
-            document.querySelector('.maps-page__group').classList.add('grid')
+        if (localStorage.getItem('identify')) {
+            name_el.value = JSON.parse(localStorage.getItem('identify')).name;
+            surname_el.value = JSON.parse(localStorage.getItem('identify')).surname;
+            link_el.value = JSON.parse(localStorage.getItem('identify')).link;
         }
     };
-    if (document.querySelector('.menu__button')) {
-        storageMenuSet();
-    }
+    storageMenuSet();
+
+    // select
+    const selects = document.querySelectorAll('.select');
+    // select
     // select item
-    function switchIneraction(item) {
+    function switchInteraction(item) {
         let index = item.getAttribute('data-switch-interaction');
         let interactionSwitchItems = document.querySelectorAll('.js-interaction');
-        interactionSwitchItems.forEach((item) => {
-            item.classList.add('hide')
-            if (index === item.getAttribute('data-interaction-index')) {
-                item.classList.remove('hide')
-            }
-        });
+        if (item !== document.querySelector('select__item.selected') || onceSetInteraction) {
+            interactionSwitchItems.forEach((item) => {
+                item.classList.add('hide');
+                let itemIndex = item.getAttribute('data-interaction-index').split(',');
+                itemIndex.forEach((num) => {
+                    if (num === index) {
+                        item.classList.remove('hide');
+                    }
+                });
+            });
+            selects.forEach((el) => {
+                if (el.classList.contains('open')) {
+                    el.classList.remove('open')
+                }
+            });
+        };
     };
-    switchIneraction(document.querySelector('.select__item.selected'));
+    switchInteraction(document.querySelector('.select__item.selected'), onceSetInteraction = true);
     function setSelectItem(item) {
+        let itemParent = item.closest('.select');
         if (!item.classList.contains('selected')) {
-            document.querySelectorAll('.select__item').forEach((item) => {
+            itemParent.querySelectorAll('.select__item').forEach((item) => {
                 item.classList.remove('selected');
             });
             content = item.innerText;
-            item.closest('.select').setAttribute('data-select-element', content);
+            itemParent.setAttribute('data-select-element', content);
             item.classList.add('selected');
-            item.closest('.select').classList.remove('open')
+            itemParent.classList.remove('open')
 
-            if (!item.closest('.select').classList.contains('low')) {
-                switchIneraction(item);
-            }
-        } else {
-            document.querySelectorAll('.select__item').forEach((item) => {
-                item.closest('.select').classList.remove('open');
-                item.classList.remove('selected');
-            });
-            if (item.closest('.select').classList.contains('low')) {
-                item.closest('.select.low').setAttribute('data-select-element', 'Для чего');
-            } else {
-                item.closest('.select').setAttribute('data-select-element', 'Не выбрано');
+            if (!itemParent.classList.contains('low')) {
+                switchInteraction(item);
             }
         }
     };
     // select item
+    // textarea
+    function textareaSetHeight() {
+        let observe;
+        if (window.attachEvent) {
+            observe = function (element, event, handler) {
+                element.attachEvent('on' + event, handler);
+            };
+        }
+        else {
+            observe = function (element, event, handler) {
+                element.addEventListener(event, handler, false);
+            };
+        }
+        let text = document.querySelector('textarea');
+        function resize() {
+            text.style.height = 'auto';
+            text.style.height = text.scrollHeight + 'px';
+        }
+        function delayedResize() {
+            window.setTimeout(resize, 0);
+        }
+        observe(text, 'change', resize);
+        observe(text, 'cut', delayedResize);
+        observe(text, 'paste', delayedResize);
+        observe(text, 'drop', delayedResize);
+        observe(text, 'keydown', delayedResize);
+
+        text.focus();
+        text.select();
+        resize();
+    };
+    textareaSetHeight()
+    // textarea
     // burger
     function burgerOpen(burger) {
         scroll = window.pageYOffset;
@@ -234,9 +312,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     };
     // switch
-    // select
-    const selects = document.querySelectorAll('.select');
-    // select
     // addEventListener
     document.querySelector('.wrapper').addEventListener('click', (e) => {
         let target = e.target;
@@ -300,6 +375,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 } else {
                     item.classList.add('selected')
                 }
+            } else if (e.target && e.target.classList.contains('interaction__show-link') || e.target.closest('.interaction__show-link')) {
+                e.target.classList.add('hide');
+                document.querySelector('.interaction__-input').classList.toggle('show');
             } else if (e.target && !e.target.classList.contains('select__item') || !e.target.closest('.select__item')) {
                 selects.forEach((item) => {
                     item.classList.remove('open');
