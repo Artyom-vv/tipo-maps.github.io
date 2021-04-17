@@ -100,7 +100,7 @@
                                         </div>
                                         <div class="slide__avatar">
                                             <h2 class="slide__nick">VorkGame</h2>
-                                            <a href="##" class="slide__vk none">
+                                            <a href="" class="slide__vk none">
                                                 <img src="img/vk.svg" alt="vk">
                                             </a>
                                         </div>
@@ -185,26 +185,39 @@
                     </svg>
                 </div>
                 <div class="modal__content">
-                    <h2 class="modal__title">
+                    <h2 class="modal__title main">
                         Оставить заявку
                     </h2>
-                    <div class="select-wrapper">
-                        <div class="select-wrapper__arrow">
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.011 512.011"
-                                style="enable-background:new 0 0 512.011 512.011;" xml:space="preserve">
-                                <g>
+                    <div class="modal__interaction interaction">
+                        <div class="interaction__select select" data-select-element="Заказ">
+                            <div class="select__arrow">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 512.011 512.011" style="enable-background:new 0 0 512.011 512.011;"
+                                    xml:space="preserve">
                                     <g>
-                                        <path d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0
-				s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667
-				C514.096,145.416,514.096,131.933,505.755,123.592z" />
+                                        <g>
+                                            <path d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0
+							s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667
+							C514.096,145.416,514.096,131.933,505.755,123.592z" />
+                                        </g>
                                     </g>
-                                </g>
-                            </svg>
+                                </svg>
+                            </div>
+                            <div class="select__list">
+                                <li class="select__item selected">Заказ</li>
+                                <li class="select__item">Предложение</li>
+                                <li class="select__item">Вступить в команду</li>
+                            </div>
                         </div>
-                        <select name="Тип заявки" class="modal__select select">
-                            <option value="text" class="select__option">Тип заявки</option>
-                        </select>
+                        <h2 class="modal__text">Выберите наиболее подходящие теги для вашего текста:</h2>
+                        <ul class="interaction__tags">
+                            <li class="interaction__item">Срочно</li>
+                            <li class="interaction__item">Интересное</li>
+                            <li class="interaction__item">Новое</li>
+                            <li class="interaction__item">Ошибка</li>
+                            <li class="interaction__item">Сотрудничество</li>
+                        </ul>
                     </div>
                 </div>
             </div>
