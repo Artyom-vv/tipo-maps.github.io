@@ -1,3 +1,5 @@
+let modal = document.querySelector('.modal-wrapper');
+
 // search
 function searchMapsInput() {
     let val = document.querySelector('.menu__input').value.trim().toLowerCase();
@@ -34,6 +36,7 @@ function searchMapsInput() {
 };
 // search
 // textarea
+if (modal)
 function calcTextLength() {
     document.querySelectorAll('.interaction__textarea').forEach((item) => {
         let val = item.value;
@@ -113,24 +116,36 @@ function openModal() {
 let name_el = document.querySelector('.interaction__input.name');
 let surname_el = document.querySelector('.interaction__input.surname');
 let link_el = document.querySelector('.interaction__input.link');
+let age_el = document.querySelector('.interaction__input.age');
 
-// name and surnama and link
+// name and surnama and link and age
 function getInfoAboutPeople() {
     nameI = name_el.value;
     surname = surname_el.value;
     link = link_el.value;
+    age = age_el.value;
+
+    if (age > 100) {
+        let ageNumbers = String(age).split('');
+        delete ageNumbers[ageNumbers.length - 1];
+        ageNumbers = +(ageNumbers.join(''));
+        age_el.value = ageNumbers;
+        age = ageNumbers;
+    }
 
     if (localStorage.getItem('identify')) {
         localStorage.identify = JSON.stringify({
             name: nameI,
             surname: surname,
-            link: link
+            link: link,
+            age: age
         });
     } else {
         localStorage.setItem('identify', JSON.stringify({
             name: nameI,
             surname: surname,
-            link: link
+            link: link,
+            age: age
         }));
     };
 };
@@ -163,10 +178,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 document.querySelector('.maps-page__group').classList.add('grid')
             }
         }
-        if (localStorage.getItem('identify')) {
+        if (localStorage.getItem('identify') && modal) {
             name_el.value = JSON.parse(localStorage.getItem('identify')).name;
             surname_el.value = JSON.parse(localStorage.getItem('identify')).surname;
             link_el.value = JSON.parse(localStorage.getItem('identify')).link;
+            age_el.value = JSON.parse(localStorage.getItem('identify')).age;
         }
     };
     storageMenuSet();
@@ -195,7 +211,9 @@ window.addEventListener('DOMContentLoaded', () => {
             });
         };
     };
-    switchInteraction(document.querySelector('.select__item.selected'), onceSetInteraction = true);
+    if (modal) {
+        switchInteraction(document.querySelector('.select__item.selected'), onceSetInteraction = true);
+    }
     function setSelectItem(item) {
         let itemParent = item.closest('.select');
         if (!item.classList.contains('selected')) {
@@ -244,7 +262,9 @@ window.addEventListener('DOMContentLoaded', () => {
         text.select();
         resize();
     };
-    textareaSetHeight()
+    if (modal) {
+        textareaSetHeight()
+    }
     // textarea
     // burger
     function burgerOpen(burger) {
@@ -296,9 +316,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 data.current.container.remove()
             },
             async enter(data) {
+                sliderInit();
                 UnlockScroll();
                 document.documentElement.scrollTop = 0;
-                sliderInit();
                 await showPage();
             }
         }]
@@ -358,7 +378,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     document.querySelectorAll('.modal-wrapper').forEach((item) => {
         item.addEventListener('click', (e) => {
-            if (e.target && e.target.classList.contains('modal-wrapper') && !e.target.closest('.modal') || e.target.closest('.modal__close')) {
+            if (e.target && e.target.classList.contains('modal') && !e.target.closest('.modal__content') || e.target.closest('.modal__close')) {
                 selects.forEach((item) => {
                     item.classList.remove('open');
                 });
@@ -375,13 +395,14 @@ window.addEventListener('DOMContentLoaded', () => {
                 } else {
                     item.classList.add('selected')
                 }
-            } else if (e.target && e.target.classList.contains('interaction__show-link') || e.target.closest('.interaction__show-link')) {
-                e.target.classList.add('hide');
-                document.querySelector('.interaction__-input').classList.toggle('show');
             } else if (e.target && !e.target.classList.contains('select__item') || !e.target.closest('.select__item')) {
                 selects.forEach((item) => {
                     item.classList.remove('open');
                 });
+            }
+            if (e.target && e.target.classList.contains('interaction__show-link') || e.target.closest('.interaction__show-link')) {
+                e.target.classList.add('hide');
+                document.querySelector('.interaction__-input').classList.toggle('show');
             }
         })
     })
