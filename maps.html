@@ -281,133 +281,190 @@
 					</h2>
 				</div>
 				<div class="modal__interaction interaction">
-					<div class="interaction__select-wrapper">
-						<div class="interaction__select select" data-select-element="Заказ">
-							<div class="select__arrow">
-								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-									viewBox="0 0 512.011 512.011" style="enable-background:new 0 0 512.011 512.011;"
-									xml:space="preserve">
-									<g>
-										<g>
-											<path d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0
-									s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667
-									C514.096,145.416,514.096,131.933,505.755,123.592z" />
-										</g>
-									</g>
-								</svg>
-							</div>
-							<div class="select__list">
-								<li class="select__item selected" data-switch-interaction="1">Заказ</li>
-								<li class="select__item" data-switch-interaction="2">Предложение</li>
-								<li class="select__item" data-switch-interaction="3">Вступить в команду</li>
-								<li class="select__item" data-switch-interaction="4">Сотрудничество</li>
-							</div>
-						</div>
-						<div class="interaction__select select low js-interaction" data-select-element="Для себя"
-							data-interaction-index="1" data-select-element="Для себя">
-							<div class="select__arrow">
-								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-									viewBox="0 0 512.011 512.011" style="enable-background:new 0 0 512.011 512.011;"
-									xml:space="preserve">
-									<g>
-										<g>
-											<path d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0
-									s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667
-									C514.096,145.416,514.096,131.933,505.755,123.592z" />
-										</g>
-									</g>
-								</svg>
-							</div>
-							<div class="select__list">
-								<li class="select__item selected">Для себя</li>
-								<li class="select__item">Для канала</li>
-								<li class="select__item">Для общего доступа</li>
-							</div>
-						</div>
-					</div>
-					<div class="interaction__identify js-interaction" data-interaction-index="1,2,3">
-						<h2 class="modal__text js-interaction" data-interaction-index="1,2">Представьтесь:</h2>
-						<h2 class="modal__text js-interaction" data-interaction-index="3,4">Заполните анкету:</h2>
-						<div class="interaction__inputs-wrapper">
-							<div class="interaction__inputs">
-								<div class="interaction__column">
-									<input type="text" oninput="getInfoAboutPeople()" placeholder="Имя" maxlength="18"
-										class="interaction__input name">
-									<input type="text" oninput="getInfoAboutPeople()" placeholder="Фамилия"
-										maxlength="18" class="interaction__input surname">
+					<form action="#">
+						<div class="interaction__header">
+							<div class="interaction__select-wrapper">
+								<div class="interaction__select select" data-select-element="Заказ">
+									<div class="select__arrow">
+										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											viewBox="0 0 512.011 512.011"
+											style="enable-background:new 0 0 512.011 512.011;" xml:space="preserve">
+											<g>
+												<g>
+													<path d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0
+										s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667
+										C514.096,145.416,514.096,131.933,505.755,123.592z" />
+												</g>
+											</g>
+										</svg>
+									</div>
+									<div class="select__list">
+										<li class="select__item selected js-switch" data-switch-interaction="1">Заказ
+										</li>
+										<li class="select__item js-switch" data-switch-interaction="2">Предложение</li>
+										<li class="select__item js-switch" data-switch-interaction="3">Вступить в
+											команду</li>
+										<li class="select__item js-switch" data-switch-interaction="4">Сотрудничество
+										</li>
+									</div>
 								</div>
-								<div class="interaction__column w100">
-									<p class="interaction__show-link">Указать ссылку</p>
-									<div class="interaction__-input">
-										<input type="text" oninput="getInfoAboutPeople()" placeholder="Ссылка на вк"
-											class="interaction__input link">
+								<div class="interaction__select select low js-interaction req"
+									data-interaction-index="1" data-select-element="Для себя">
+									<div class="select__arrow">
+										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											viewBox="0 0 512.011 512.011"
+											style="enable-background:new 0 0 512.011 512.011;" xml:space="preserve">
+											<g>
+												<g>
+													<path d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0
+										s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667
+										C514.096,145.416,514.096,131.933,505.755,123.592z" />
+												</g>
+											</g>
+										</svg>
+									</div>
+									<div class="select__list">
+										<li class="select__item selected">Для себя</li>
+										<li class="select__item">Для канала</li>
+										<li class="select__item">Для общего доступа</li>
+									</div>
+								</div>
+								<div class="interaction__select select low js-interaction toast toast--top req"
+									data-toast="Ваша специализация" data-interaction-index="3"
+									data-select-element="Другое">
+									<div class="select__arrow">
+										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											viewBox="0 0 512.011 512.011"
+											style="enable-background:new 0 0 512.011 512.011;" xml:space="preserve">
+											<g>
+												<g>
+													<path d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0
+									s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667
+									C514.096,145.416,514.096,131.933,505.755,123.592z" />
+												</g>
+											</g>
+										</svg>
+									</div>
+									<div class="select__list">
+										<li class="select__item selected">Другое</li>
+										<li class="select__item">Дата-паки</li>
+										<li class="select__item">Ресурспаки</li>
+										<li class="select__item">Постройки</li>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="interaction__titles 1">
-						<h2 class="modal__text js-interaction" data-interaction-index="1">Что будет входить в ваш
-							заказ?</h2>
-						<h2 class="modal__text js-interaction" data-interaction-index="2">Выберите наиболее
-							подходящие теги:</h2>
-					</div>
-					<ul class="interaction__tags">
-						<ul class="interaction__tags-wrapper js-interaction" data-interaction-index="1">
-							<li class="interaction__item">Ландшафт</li>
-							<li class="interaction__item">Ресурспак</li>
-							<li class="interaction__item">Дата-пак</li>
-						</ul>
-						<ul class="interaction__tags-wrapper js-interaction" data-interaction-index="2">
-							<li class="interaction__item">Ландшафт</li>
-							<li class="interaction__item">Дата-пак</li>
-							<li class="interaction__item">Ресурспак</li>
-							<li class="interaction__item">Совет</li>
-							<li class="interaction__item">Интересное</li>
-							<li class="interaction__item">Продвижение</li>
-							<li class="interaction__item">Мини-игра</li>
-							<li class="interaction__item">Сюжетная карта</li>
-						</ul>
-						<ul class="interaction__tags-wrapper js-interaction" data-interaction-index="4">
-							<li class="interaction__item">Срочно</li>
-							<li class="interaction__item">Интересное</li>
-							<li class="interaction__item">Реклама</li>
-							<li class="interaction__item">Контент для канала</li>
-						</ul>
-					</ul>
-					<div class="interaction__application js-interaction" data-interaction-index="3">
-						<input type="number" oninput="getInfoAboutPeople()" class="interaction__input age" max="100"
-							placeholder="Ваш возраст">
-					</div>
-					<div class="interaction__titles 2">
-						<h2 class="modal__text js-interaction" data-interaction-index="1">Опишите свой заказ кратко:
-						</h2>
-						<h2 class="modal__text js-interaction" data-interaction-index="2">Ваше предложение:</h2>
-						<h2 class="modal__text js-interaction" data-interaction-index="3,4">Расскажите о себе:</h2>
-					</div>
-					<div class="interaction__textarea-wrapper js-interaction" data-interaction-index="1"
-						data-length="0/500">
-						<textarea class="interaction__textarea" placeholder="Начните писать сообщение"
-							oninput="calcTextLength()"></textarea>
-					</div>
-					<div class="interaction__textarea-wrapper js-interaction" data-interaction-index="2"
-						data-length="0/500">
-						<textarea class="interaction__textarea" placeholder="Начните писать сообщение"
-							oninput="calcTextLength()"></textarea>
-					</div>
-					<div class="interaction__textarea-wrapper js-interaction" data-interaction-index="3"
-						data-length="0/500">
-						<textarea class="interaction__textarea" placeholder="Начните писать сообщение"
-							oninput="calcTextLength()"></textarea>
-					</div>
-					<div class="interaction__textarea-wrapper js-interaction" data-interaction-index="4"
-						data-length="0/500">
-						<textarea class="interaction__textarea" placeholder="Начните писать сообщение"
-							oninput="calcTextLength()"></textarea>
-					</div>
-					<button class="interaction__submit button-green">Отправить</button>
+						<div class="interaction__static">
+							<div class="interaction__identify">
+								<h2 class="modal__text js-interaction" data-interaction-index="1,2">Представьтесь:</h2>
+								<h2 class="modal__text js-interaction" data-interaction-index="3,4">Заполните анкету:
+								</h2>
+								<div class="interaction__inputs">
+									<div class="interaction__column">
+										<input type="text" oninput="getInfoAboutPeople()" placeholder="Имя"
+											maxlength="18" class="interaction__input name req">
+										<input type="text" oninput="getInfoAboutPeople()" placeholder="Фамилия"
+											maxlength="18" class="interaction__input surname req">
+										<input type="number" oninput="getInfoAboutPeople()"
+											class="interaction__input js-interaction age req" max="100"
+											placeholder="Ваш возраст" data-interaction-index="3">
+									</div>
+									<div class="interaction__column w100">
+										<div class="interaction__-input">
+											<input type="text" oninput="getInfoAboutPeople()" maxlength="65"
+												placeholder="Ссылка на вк" class="interaction__input link req">
+										</div>
+										<input type="number" oninput="getInfoAboutPeople()"
+											class="interaction__input js-interaction age req" max="100"
+											placeholder="Ваш возраст" data-interaction-index="4">
+										<div class="interaction__select interaction__input select identify low toast js-interaction req"
+											data-interaction-index="3" data-select-element="менее года"
+											data-toast="Опыт в выбранной категории">
+											<div class="select__arrow">
+												<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+													xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+													viewBox="0 0 512.011 512.011"
+													style="enable-background:new 0 0 512.011 512.011;"
+													xml:space="preserve">
+													<g>
+														<g>
+															<path d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0
+								s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667
+								C514.096,145.416,514.096,131.933,505.755,123.592z" />
+														</g>
+													</g>
+												</svg>
+											</div>
+											<div class="select__list">
+												<li class="select__item selected">менее года</li>
+												<li class="select__item">1 год</li>
+												<li class="select__item">2 года</li>
+												<li class="select__item">выше 2 лет</li>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="interaction__footer">
+							<div class="interaction__content js-interaction" data-interaction-index="1">
+								<h2 class="modal__text">Что будет входить в ваш заказ?</h2>
+								<ul class="interaction__tags">
+									<li class="interaction__item">Ландшафт</li>
+									<li class="interaction__item">Ресурспак</li>
+									<li class="interaction__item">Дата-пак</li>
+								</ul>
+								<h2 class="modal__text">Опишите свой заказ кратко:</h2>
+								<div class="interaction__textarea-wrapper" data-length="0/500">
+									<textarea class="interaction__textarea req" placeholder="Начните писать сообщение"
+										oninput="calcTextLength()"></textarea>
+								</div>
+							</div>
+							<div class="interaction__content js-interaction" data-interaction-index="2">
+								<h2 class="modal__text">Выберите наиболее подходящие теги:</h2>
+								<ul class="interaction__tags">
+									<li class="interaction__item">Ландшафт</li>
+									<li class="interaction__item">Дата-пак</li>
+									<li class="interaction__item">Ресурспак</li>
+									<li class="interaction__item">Совет</li>
+									<li class="interaction__item">Интересное</li>
+									<li class="interaction__item">Продвижение</li>
+									<li class="interaction__item">Мини-игра</li>
+									<li class="interaction__item">Сюжетная карта</li>
+								</ul>
+								<h2 class="modal__text">Ваше предложение:</h2>
+								<div class="interaction__textarea-wrapper" data-length="0/500">
+									<textarea class="interaction__textarea req" placeholder="Начните писать сообщение"
+										oninput="calcTextLength()"></textarea>
+								</div>
+							</div>
+							<div class="interaction__content js-interaction" data-interaction-index="3">
+								<h2 class="modal__text">Расскажите о себе:</h2>
+								<div class="interaction__textarea-wrapper" data-length="0/500">
+									<textarea class="interaction__textarea req" placeholder="Начните писать сообщение"
+										oninput="calcTextLength()"></textarea>
+								</div>
+							</div>
+							<div class="interaction__content js-interaction" data-interaction-index="4">
+								<h2 class="modal__text">Выберите наиболее подходящие теги:</h2>
+								<ul class="interaction__tags">
+									<li class="interaction__item">Срочно</li>
+									<li class="interaction__item">Интересное</li>
+									<li class="interaction__item">Реклама</li>
+									<li class="interaction__item">Контент для канала</li>
+								</ul>
+								<h2 class="modal__text">Расскажите о себе:</h2>
+								<div class="interaction__textarea-wrapper" data-length="0/500">
+									<textarea class="interaction__textarea req" placeholder="Начните писать сообщение"
+										oninput="calcTextLength()"></textarea>
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="interaction__submit button-green">Отправить</button>
+					</form>
 				</div>
 			</div>
 		</div>
