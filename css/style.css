@@ -336,7 +336,7 @@ ul.transition li {
   font-weight: 400;
   font-size: 22px;
   position: relative;
-  z-index: 25;
+  z-index: 50;
 }
 
 .select:first-child {
@@ -352,8 +352,11 @@ ul.transition li {
   min-width: 35%;
 }
 
-.select:hover {
-  cursor: pointer;
+.select.identify {
+  margin-left: 0;
+  max-width: 70%;
+  min-width: auto;
+  z-index: 40;
 }
 
 .select.open .select__list {
@@ -368,6 +371,32 @@ ul.transition li {
 .select.open .select__arrow {
   -webkit-transform: translateY(-50%) scaleY(-1);
           transform: translateY(-50%) scaleY(-1);
+}
+
+.select.toast::before {
+  content: attr(data-toast);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  -webkit-transform: translateY(calc(100% + 3px));
+          transform: translateY(calc(100% + 3px));
+  font-size: 12px;
+  color: #fff;
+  background: #000;
+  border-radius: 6px;
+  padding: 4px 12px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  opacity: 0;
+  pointer-events: hidden;
+  overflow: hidden;
+}
+
+.select.toast--top::before {
+  top: 0;
+  bottom: auto;
+  -webkit-transform: translateY(calc(-100% - 3px));
+          transform: translateY(calc(-100% - 3px));
 }
 
 .select::after {
@@ -427,6 +456,16 @@ ul.transition li {
   background: #081213;
 }
 
+.select:hover {
+  cursor: pointer;
+}
+
+.select:hover.toast::before {
+  opacity: 0.75;
+  overflow: visible;
+  pointer-events: visible;
+}
+
 .interaction {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -443,12 +482,6 @@ ul.transition li {
 
 .interaction__tags {
   margin-top: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.interaction__tags-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -509,6 +542,8 @@ ul.transition li {
   min-height: 140px;
   resize: none;
   overflow: hidden;
+  -webkit-transition: 0.15s ease;
+  transition: 0.15s ease;
   font-family: 'Scada', sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -538,7 +573,6 @@ ul.transition li {
 }
 
 .interaction__-input {
-  display: none;
   max-width: 70%;
   position: relative;
 }
@@ -552,11 +586,9 @@ ul.transition li {
           transform: translateY(-50%);
 }
 
-.interaction__-input.show {
-  display: block;
-}
-
 .interaction__input {
+  -webkit-transition: 0.15s ease;
+  transition: 0.15s ease;
   margin-top: 7px;
   max-width: 100%;
   display: block;
@@ -600,22 +632,14 @@ ul.transition li {
   max-width: 100%;
 }
 
-.interaction__show-link {
-  display: inline-block;
-  font-size: 16px;
-  color: #497cbe;
-  text-decoration: underline;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-}
-
-.interaction__show-link:hover {
-  cursor: pointer;
-}
-
 .interaction__submit {
   margin-top: 17px;
   display: block;
+}
+
+.interaction .error {
+  -webkit-box-shadow: 0 0 15px rgba(247, 62, 62, 0.6);
+          box-shadow: 0 0 15px rgba(247, 62, 62, 0.6);
 }
 
 .js-interaction.hide {
