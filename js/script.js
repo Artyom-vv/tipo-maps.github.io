@@ -36,14 +36,15 @@ function searchMapsInput() {
 };
 // search
 // textarea
-if (modal)
-function calcTextLength() {
-    document.querySelectorAll('.interaction__textarea').forEach((item) => {
-        let val = item.value;
-        let textLength = val.split('').length;
-        item.closest('.interaction__textarea-wrapper').setAttribute('data-length', textLength);
-    });
-};
+if (modal) {
+    function calcTextLength() {
+        document.querySelectorAll('.interaction__textarea').forEach((item) => {
+            let val = item.value;
+            let textLength = val.split('').length;
+            item.closest('.interaction__textarea-wrapper').setAttribute('data-length', `${textLength}/450`);
+        });
+    };
+}
 // textarea
 // wheel
 const vk = document.querySelector('.fixed-vk');
@@ -120,10 +121,10 @@ let age_el = document.querySelector('.interaction__input.age');
 
 // name and surnama and link and age
 function getInfoAboutPeople() {
-    nameI = name_el.value;
-    surname = surname_el.value;
-    link = link_el.value;
-    age = age_el.value;
+    let nameI = name_el.value;
+    let surname = surname_el.value;
+    let link = link_el.value;
+    let age = age_el.value;
 
     if (age > 100) {
         let ageNumbers = String(age).split('');
@@ -132,7 +133,6 @@ function getInfoAboutPeople() {
         age_el.value = ageNumbers;
         age = ageNumbers;
     }
-
     if (localStorage.getItem('identify')) {
         localStorage.identify = JSON.stringify({
             name: nameI,
@@ -186,14 +186,14 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     };
     storageMenuSet();
-
     // select
     const selects = document.querySelectorAll('.select');
     // select
     // select item
-    function switchInteraction(item) {
+    let interactionSwitchItems = document.querySelectorAll('.js-interaction');
+
+    function switchInteraction(item, onceSetInteraction) {
         let index = item.getAttribute('data-switch-interaction');
-        let interactionSwitchItems = document.querySelectorAll('.js-interaction');
         if (item !== document.querySelector('select__item.selected') || onceSetInteraction) {
             interactionSwitchItems.forEach((item) => {
                 item.classList.add('hide');
@@ -204,6 +204,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             });
+
             selects.forEach((el) => {
                 if (el.classList.contains('open')) {
                     el.classList.remove('open')
@@ -214,6 +215,54 @@ window.addEventListener('DOMContentLoaded', () => {
     if (modal) {
         switchInteraction(document.querySelector('.select__item.selected'), onceSetInteraction = true);
     }
+    // validation modal form
+    const req = document.querySelectorAll('.req');
+    const interactionContent = document.querySelectorAll('.interaction__content');
+    const validationInputs = document.querySelectorAll('.interaction__input.req');
+    const validationSelects = document.querySelectorAll('.interaction__select .req');
+
+    function validationReqElements() {
+        interactionContent.forEach((item) => {
+            let index = document.querySelector('.select__item.selected.js-switch').getAttribute('data-switch-interaction');
+            let itemIndex = item.getAttribute('data-interaction-index').split(',');
+            itemIndex.forEach((num) => {
+                if (num === index) {
+                    let currentTextArea = item.querySelector('.interaction__textarea-wrapper textarea');
+                    if (currentTextArea.value === '' || currentTextArea.getAttribute('data-length') > 500) {
+                        currentTextArea.classList.add('error')
+
+                        // let message = 'error'
+
+                        // let error_message = document.createElement('div');
+                        // error_message.content = 'error_message';
+                        // error_message.innerHTML = message;
+
+                        // currentTextArea.append(error_message)
+
+                    } else {
+                        currentTextArea.classList.remove('error')
+                    }
+                }
+            });
+        });
+        validationInputs.forEach((item) => {
+            if (item.value === '') {
+                item.classList.add('error');
+            } else {
+                item.classList.remove('error');
+            }
+        });
+        validationSelects.forEach((item) => {
+            let selectList = item.childNodes('select__item');
+            console.log(selectList);
+        });
+        setTimeout(() => {
+            req.forEach((item) => {
+                item.classList.remove('error');
+            });
+        }, 4000);
+    };
+    // validation modal form
     function setSelectItem(item) {
         let itemParent = item.closest('.select');
         if (!item.classList.contains('selected')) {
@@ -400,9 +449,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     item.classList.remove('open');
                 });
             }
-            if (e.target && e.target.classList.contains('interaction__show-link') || e.target.closest('.interaction__show-link')) {
-                e.target.classList.add('hide');
-                document.querySelector('.interaction__-input').classList.toggle('show');
+            if (e.target && e.target.classList.contains('interaction__submit')) {
+                validationReqElements()
             }
         })
     })
